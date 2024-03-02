@@ -1,4 +1,4 @@
-﻿using EntityLayer.Concret;
+﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,16 +12,11 @@ namespace DAL.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("server =DESKTOP-LUJ8MVB; database=EBookStore; integrated security=true;TrustServerCertificate=True");
+            options.UseSqlServer("server =DESKTOP-LUJ8MVB; database=EBookStoreee; integrated security=true;TrustServerCertificate=True");
         }
-     public  DbSet<Test>tests {  get; set; }
-     public  DbSet<Blog> Blogs {  get; set; }
-     public  DbSet<Book> Books {  get; set; }
-     public  DbSet<ContactMe> ContactMes {  get; set; }
-     public  DbSet<KeepInTouch> KeepInTouches {  get; set; }
-     public  DbSet<Icon> Icons {  get; set; }
-     public  DbSet<Sponsor> Sponsors {  get; set; }
-     public  DbSet<Author> Authors {  get; set; }
+          public DbSet<Book> books {  get; set; }
+          public DbSet<Blog> blogs {  get; set; }
+          public DbSet<Author> authors {  get; set; }
 
 
 

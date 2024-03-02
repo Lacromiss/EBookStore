@@ -3858,7 +3858,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "EntityLayer": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15"
         },
@@ -3867,20 +3866,6 @@
         },
         "runtime": {
           "bin/placeholder/DAL.dll": {}
-        }
-      },
-      "EntityLayer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.15",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.15"
-        },
-        "compile": {
-          "bin/placeholder/EntityLayer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EntityLayer.dll": {}
         }
       }
     }
@@ -11233,17 +11218,11 @@
       "type": "project",
       "path": "../DAL/DAL.csproj",
       "msbuildProject": "../DAL/DAL.csproj"
-    },
-    "EntityLayer/1.0.0": {
-      "type": "project",
-      "path": "../EntityLayer/EntityLayer.csproj",
-      "msbuildProject": "../EntityLayer/EntityLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "DAL >= 1.0.0",
-      "EntityLayer >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.15",
@@ -11284,9 +11263,6 @@
           "projectReferences": {
             "C:\\Users\\Mustafa\\source\\repos\\BookStore\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\DAL\\DAL.csproj"
-            },
-            "C:\\Users\\Mustafa\\source\\repos\\BookStore\\EntityLayer\\EntityLayer.csproj": {
-              "projectPath": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\EntityLayer\\EntityLayer.csproj"
             }
           }
         }

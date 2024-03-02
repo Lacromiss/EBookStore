@@ -74,9 +74,7 @@ C:\Users\Mustafa\source\repos\BookStore\BookStore\obj\Debug\net7.0\BookStore.pdb
 C:\Users\Mustafa\source\repos\BookStore\BookStore\obj\Debug\net7.0\BookStore.genruntimeconfig.cache
 C:\Users\Mustafa\source\repos\BookStore\BookStore\obj\Debug\net7.0\ref\BookStore.dll
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\DAL.dll
-C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\EntityLayer.dll
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\DAL.pdb
-C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\EntityLayer.pdb
 C:\Users\Mustafa\source\repos\BookStore\BookStore\obj\Debug\net7.0\BookStore.sourcelink.json
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.Build.dll
