@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(EBookStoreDbContext))]
-    [Migration("20240302052435_createClassAndRelationsBooksblogsAuthors")]
-    partial class createClassAndRelationsBooksblogsAuthors
+    [Migration("20240302055426_createBlogAuthorBooksAndRelations")]
+    partial class createBlogAuthorBooksAndRelations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DAL.Entities.Author", b =>
+            modelBuilder.Entity("Core.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +82,7 @@ namespace DAL.Migrations
                     b.ToTable("authors");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Blog", b =>
+            modelBuilder.Entity("Core.Entities.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +125,7 @@ namespace DAL.Migrations
                     b.ToTable("blogs");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Book", b =>
+            modelBuilder.Entity("Core.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,9 +177,9 @@ namespace DAL.Migrations
                     b.ToTable("books");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Blog", b =>
+            modelBuilder.Entity("Core.Entities.Blog", b =>
                 {
-                    b.HasOne("DAL.Entities.Author", "Author")
+                    b.HasOne("Core.Entities.Author", "Author")
                         .WithMany("Blogs")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -188,9 +188,9 @@ namespace DAL.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Book", b =>
+            modelBuilder.Entity("Core.Entities.Book", b =>
                 {
-                    b.HasOne("DAL.Entities.Author", "Author")
+                    b.HasOne("Core.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -199,7 +199,7 @@ namespace DAL.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Author", b =>
+            modelBuilder.Entity("Core.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
 

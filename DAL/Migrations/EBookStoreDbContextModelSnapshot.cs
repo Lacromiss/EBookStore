@@ -22,7 +22,7 @@ namespace DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DAL.Entities.Author", b =>
+            modelBuilder.Entity("Core.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace DAL.Migrations
                     b.ToTable("authors");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Blog", b =>
+            modelBuilder.Entity("Core.Entities.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -122,7 +122,7 @@ namespace DAL.Migrations
                     b.ToTable("blogs");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Book", b =>
+            modelBuilder.Entity("Core.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,9 +174,35 @@ namespace DAL.Migrations
                     b.ToTable("books");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Blog", b =>
+            modelBuilder.Entity("Core.Entities.Test", b =>
                 {
-                    b.HasOne("DAL.Entities.Author", "Author")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tests");
+                });
+
+            modelBuilder.Entity("Core.Entities.Blog", b =>
+                {
+                    b.HasOne("Core.Entities.Author", "Author")
                         .WithMany("Blogs")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -185,9 +211,9 @@ namespace DAL.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Book", b =>
+            modelBuilder.Entity("Core.Entities.Book", b =>
                 {
-                    b.HasOne("DAL.Entities.Author", "Author")
+                    b.HasOne("Core.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -196,7 +222,7 @@ namespace DAL.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Author", b =>
+            modelBuilder.Entity("Core.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
 

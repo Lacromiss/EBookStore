@@ -960,6 +960,16 @@
             "rid": "win"
           }
         }
+      },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
       }
     }
   },
@@ -2609,10 +2619,16 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15"
     ]
@@ -2648,7 +2664,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Mustafa\\source\\repos\\BookStore\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\Core\\Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
