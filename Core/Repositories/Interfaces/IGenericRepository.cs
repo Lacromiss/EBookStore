@@ -14,6 +14,5 @@ namespace Core.Repositories.Interfaces
         public Task<List<T>> GetAllAsync();
         public Task AddAsync(T entity);
         public Task UpdateAsync(T entity);
-        public Task<int> SaveAsync(int id);
     }
 }

@@ -19,6 +19,7 @@ namespace DAL.Repositories.Implementations
         public async Task AddAsync(T entity)
         {
             _context.Add(entity);
+            _context.SaveChangesAsync();
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -32,14 +33,12 @@ namespace DAL.Repositories.Implementations
            return _context.Set<T>().Find(id);
         }
 
-        public Task<int> SaveAsync(int id)
-        {
-          return  _context.SaveChangesAsync();
-        }
+    
 
         public async Task UpdateAsync(T entity)
         {
             _context.Update(entity);
+            _context.SaveChangesAsync();
         }
     }
 }
