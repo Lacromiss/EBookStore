@@ -11,7 +11,7 @@ namespace Services.Implementations
 {
     public class BookService : IBookService
     {
-       private readonly IBookRepository _bookRepository;
+       private readonly IGenericRepository<Book> _bookRepository;
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository=bookRepository;
