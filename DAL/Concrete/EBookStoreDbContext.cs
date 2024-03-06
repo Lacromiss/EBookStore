@@ -12,7 +12,7 @@ namespace DAL.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("server =DESKTOP-LUJ8MVB; database=EBookStoreeee; integrated security=true;TrustServerCertificate=True");
+            options.UseSqlServer("server =DESKTOP-LUJ8MVB; database=EBookStoreeee; Integrated Security=true;TrustServerCertificate=True");
         }
           public DbSet<Book> books {  get; set; }
           public DbSet<Blog> blogs {  get; set; }

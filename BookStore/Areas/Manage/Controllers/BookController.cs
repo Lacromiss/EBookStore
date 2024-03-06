@@ -10,11 +10,13 @@ namespace BookStore.Areas.Manage.Controllers
     [Area("Manage")]
     public class BookController : Controller
     {
-        public IBookService _bookService;
+        private readonly IBookService _bookService;
+
         public BookController(IBookService bookService)
         {
-                _bookService = bookService;
+            _bookService = bookService;
         }
+
         public IActionResult Index()
         {
 
@@ -28,14 +30,11 @@ namespace BookStore.Areas.Manage.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book book)
+       public IActionResult Create(Book book)
         {
 
-
             book.CreatedDate = DateTime.Now;
-            book.UpdatedDate = DateTime.Now;
             book.isDeleted = true;
-
 
             _bookService.Create(book);
 

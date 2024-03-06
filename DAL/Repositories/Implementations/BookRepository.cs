@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories.Implementations
 {
-    public class BookRepository:GenericRepository<Book>,IBookRepository
+    public class BookRepository:GenericRepository<Book>, IBookRepository
     {
         public BookRepository(EBookStoreDbContext context):base(context) 
         {

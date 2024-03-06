@@ -13,7 +13,7 @@ namespace DAL.Repositories.Implementations
         private readonly EBookStoreDbContext _context;
         public GenericRepository(EBookStoreDbContext context)
         {
-            _context = _context;
+            _context = context;
         }
 
         public async Task AddAsync(T entity)
