@@ -91,9 +91,8 @@
                 @Html.DisplayFor(modelItem => item.UpdatedDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-action="Update" asp-area="Manage" asp-controller="Book" asp-route-Id="@item.Id">Edit</a>
+             
             </td>
         </tr>
 }

@@ -39,7 +39,7 @@ namespace DAL.Repositories.Implementations
         public async Task UpdateAsync(T entity)
         {
             _context.Update(entity);
-            _context.SaveChangesAsync();
+       await     _context.SaveChangesAsync();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Services.Implementations
 {
     public class BookService : IBookService
     {
-       private readonly IBookRepository _bookRepository;
+       private  IBookRepository _bookRepository;
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository=bookRepository;
@@ -34,21 +34,29 @@ namespace Services.Implementations
 
         }
 
-        public async void UpdateAsync(Book book,int id)
+       
+
+     
+    
+
+        public async   Task UpdateAsync(Book book1, int id)
         {
-            Book book1= await _bookRepository.GetByIdAsync(id);
+            Book book = await _bookRepository.GetByIdAsync(id);
+          
             book.Description = book1.Description;
             book.Author = book1.Author;
-            book.AuthorId= book1.AuthorId;
+            book.AuthorId = book1.AuthorId;
             book.ImgUrl = book1.ImgUrl;
-            book.Raiting= book1.Raiting;
-            book.isDeleted= book1.isDeleted;
-            book.Lenght= book1.Lenght;
-            book.Name= book1.Name;
-            book.UpdatedDate=DateTime.Now;
-            book.CreatedDate= book1.CreatedDate;
+            book.Raiting = book1.Raiting;
+            book.isDeleted = book1.isDeleted;
+            book.Lenght = book1.Lenght;
+            book.Name = book1.Name;
+            book.UpdatedDate = DateTime.Now;
+            book.CreatedDate = book1.CreatedDate;
 
-           _bookRepository.UpdateAsync(book);
+           await _bookRepository.UpdateAsync(book);
+            
+
         }
     }
 }
