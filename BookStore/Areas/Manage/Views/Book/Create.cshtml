@@ -1,49 +1,69 @@
-﻿@model Book
+﻿@model Core.Entities.Book
+
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
 
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" asp-controller="Book" asp-area="Manage">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImgUrl" class="control-label"></label>
+                <input asp-for="ImgUrl" class="form-control" />
+                <span asp-validation-for="ImgUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Page" class="control-label"></label>
+                <input asp-for="Page" class="form-control" />
+                <span asp-validation-for="Page" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lenght" class="control-label"></label>
+                <input asp-for="Lenght" class="form-control" />
+                <span asp-validation-for="Lenght" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorId" class="control-label"></label>
+                <input asp-for="AuthorId" class="form-control" />
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Raiting" class="control-label"></label>
+                <input asp-for="Raiting" class="form-control" />
+                <span asp-validation-for="Raiting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            
+           
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-@{
-    ViewBag.Title = "Kitap Oluşturma";
-}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-<h2>Kitap Oluşturma</h2>
-
-<form asp-action="Create" asp-area="Manage" asp-controller="Book" method="post" >
-    <div class="form-group">
-        <label for="Name">Kitap Adı:</label>
-        <input type="text" class="form-control" id="Name" name="Name" />
-    </div>
-    <div class="form-group">
-        <label for="Description">Açıklama:</label>
-        <textarea class="form-control" id="Description" name="Description"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="ImgUrl">Resim URL:</label>
-        <input type="text" class="form-control" id="ImgUrl" name="ImgUrl" />
-    </div>
-    <div class="form-group">
-        <label for="Page">Sayfa Sayısı:</label>
-        <input type="text" class="form-control" id="Page" name="Page" />
-    </div>
-    <div class="form-group">
-        <label for="Price">Fiyat:</label>
-        <input type="number" step="0.01" class="form-control" id="Price" name="Price" />
-    </div>
-    <div class="form-group">
-        <label for="Length">Uzunluk (cm):</label>
-        <input type="number" step="0.01" class="form-control" id="Length" name="Length" />
-    </div>
-    <div class="form-group">
-        <label for="AuthorId">AuthorId:</label>
-        <input type="number" step="0.01" class="form-control" id="AuthorId" name="AuthorId" />
-        </div>
-    <div class="form-group">
-        <label for="Raiting">Raiting:</label>
-        <input type="number" step="0.01" class="form-control" id="Raiting" name="Raiting" />
-    </div>
-        <button type="submit">Send</button>
-</form>

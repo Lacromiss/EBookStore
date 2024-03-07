@@ -27,6 +27,7 @@ namespace DAL.Repositories.Implementations
             return _context.Set<T>().ToList();
 
         }
+         
 
         public async Task<T> GetByIdAsync(int id)
         {
