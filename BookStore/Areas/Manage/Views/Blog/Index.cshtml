@@ -1,0 +1,82 @@
+﻿@model List<Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+         ImgUrl
+            </th>
+            <th>
+     Title
+            </th>
+            <th>
+           Description
+            </th>
+            <th>
+              Link
+            </th>
+            <th>
+              AuthorId
+            </th>
+            <th>
+            Id
+            </th>
+            <th>
+        isDeleted
+            </th>
+            <th>
+                CreatedDate
+            </th>
+            <th>
+                UpdatedDate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgUrl);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                <a asp-route-Id="@item.Id" asp-action="Update" asp-controller="Blog" asp-area="Manage" > Update</a>
+            
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

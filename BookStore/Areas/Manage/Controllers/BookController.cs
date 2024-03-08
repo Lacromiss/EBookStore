@@ -46,7 +46,7 @@ namespace BookStore.Areas.Manage.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        public  async Task< IActionResult> UpdateAsync(int id ) 
+        public  async Task< IActionResult> Update(int id ) 
         {
             var book= await _bookService.GetAsync(id);
             return View(book);
@@ -56,8 +56,13 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public  async Task< IActionResult> UpdateAsync(Book book,int id)
         {
-            
-         await    _bookService.UpdateAsync(book,id);
+            if (!ModelState.IsValid)
+            {
+                return View();
+                
+            }
+
+            await    _bookService.UpdateAsync(book,id);
             return RedirectToAction(nameof(Index));
         }
     }

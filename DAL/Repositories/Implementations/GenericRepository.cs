@@ -24,14 +24,14 @@ namespace DAL.Repositories.Implementations
 
         public async Task<List<T>> GetAllAsync()
         {
-            return _context.Set<T>().ToList();
+            return  _context.Set<T>().ToList();
 
         }
          
 
         public async Task<T> GetByIdAsync(int id)
         {
-           return _context.Set<T>().Find(id);
+           return    _context.Set<T>().Find(id);
         }
 
     

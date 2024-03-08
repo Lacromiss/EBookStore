@@ -15,6 +15,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
 builder.Services.AddHttpContextAccessor();
 

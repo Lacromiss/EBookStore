@@ -14,6 +14,6 @@ namespace Core.Entities
         public string Link { get; set; }
         //relationWithBooks
        public int AuthorId { get; set; }
-       public Author Author { get; set; }
+       public Author? Author { get; set; }
     }
 }
