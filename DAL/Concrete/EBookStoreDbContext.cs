@@ -18,6 +18,7 @@ namespace DAL.Concrete
           public DbSet<Blog> blogs {  get; set; }
           public DbSet<Author> authors {  get; set; }
           public DbSet<Test> tests {  get; set; }
+          public DbSet<ContactUs> contactUs {  get; set; }
 
 
 
