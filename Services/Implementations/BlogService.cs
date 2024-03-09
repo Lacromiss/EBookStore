@@ -38,20 +38,7 @@ namespace Services.Implementations
 
         public async Task UpdateAsync(Blog blog, int id)
         {
-            Blog updatedBlog= await _blogRepository.GetByIdAsync(id);
-            
-            
-            updatedBlog.Id=blog.Id;
-            updatedBlog.Title=blog.Title;
-            updatedBlog.Description=blog.Description;
-            updatedBlog.Author=blog.Author;
-            updatedBlog.AuthorId=blog.AuthorId;
-            updatedBlog.CreatedDate=blog.CreatedDate;
-            updatedBlog.UpdatedDate=DateTime.Now;
-            updatedBlog.ImgUrl=blog.ImgUrl;
-            updatedBlog.isDeleted = blog.isDeleted;
-            updatedBlog.Link=blog.Link;
-
+           
             
           
         }

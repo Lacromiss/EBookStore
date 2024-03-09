@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Core.Entities.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishedBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishedBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+             <a asp-action="Update" asp-controller="Author" asp-area="Manage" asp-route-Id="@item.Id" >Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
