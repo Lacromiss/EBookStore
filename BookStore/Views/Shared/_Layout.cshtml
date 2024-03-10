@@ -63,22 +63,22 @@
                             <i class="fa-regular fa-rectangle-xmark fa-lg"></i>
                         </div>
                     </div>
-                    <li><a href="">Home</a></li>
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li class="dropdown-wrapper">
                         <a  href="">
                             Pages <i class="fa-solid fa-chevron-down fa-xs"></i>
                         </a>
 
                         <ul class="dropdown">
-                            <li><a href="./store.html">Books</a></li>
+                            <li><a asp-action="Index" asp-controller="Store">Books</a></li>
 
-                            <li><a href="./blog.html">Blogs</a></li>
+                            <li><a asp-action="Index" asp-controller="Blog" >Blogs</a></li>
                         </ul>
                     </li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./blog.html">Services</a<link href="c:\users\mustafa\source\repos\bookstore\bookstore\views\shared\_layout.cshtml.css" rel="stylesheet" />
-<a href="c:\users\mustafa\source\repos\bookstore\bookstore\views\shared\_layout.cshtml">c:\users\mustafa\source\repos\bookstore\bookstore\views\shared\_layout.cshtml</a>></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a asp-action="Index" asp-controller="About">About</a></li>
+                    <li><a href="./blog.html">Services</a<link>
+<a ></a></li>
+                    <li><a asp-action="Index" asp-controller="ContactUs">Contact</a></li>
                     <div class="header-icons-container d-flex">
                         <a class="icons-border-bg-white"
                            target="_blank"
@@ -187,6 +187,10 @@
                     <li>
                         <img src="~/Assestsassets/img/dots.png" alt="" />
                         <a href="" class="gray"> Services </a>
+                    </li> 
+                    <li>
+                        <img src="~/Assestsassets/img/dots.png" alt="" />
+                        <a  class="gray"> Blog </a>
                     </li>
                     <li>
                         <img src="~/Assestsassets/img/dots.png" alt="" />
