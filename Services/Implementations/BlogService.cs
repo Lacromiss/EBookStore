@@ -21,28 +21,43 @@ namespace Services.Implementations
         public async Task CreateAsync(Blog blog)
         {
             blog.CreatedDate = DateTime.Now;
+          
 
-           await _blogRepository.AddAsync(blog);
+            await _blogRepository.AddAsync(blog);
         }
 
         public async Task<List<Blog>> GetAllAsync()
         {
-          return await  _blogRepository.GetAllAsync();
+            return await _blogRepository.GetAllAsync();
         }
 
-        public  async Task<Blog> GetByIdAsync(int id)
+        public async Task<Blog> GetByIdAsync(int id)
         {
             return await _blogRepository.GetByIdAsync(id);
-           
+
         }
 
         public async Task UpdateAsync(Blog blog, int id)
         {
-           
-            
-          
+            Blog blog1 = await _blogRepository.GetByIdAsync(id);
+            blog1.Title = blog.Title;
+            blog1.Description = blog.Description;
+            blog1.Author = blog.Author;
+            blog1.AuthorId = blog1.AuthorId;
+            blog1.ImgUrl = blog.ImgUrl;
+            blog1.isDeleted = blog.isDeleted;
+            blog1.UpdatedDate = DateTime.Now;
+            blog1.CreatedDate = blog.CreatedDate;
+
+            blog1.Link = blog.Link;
+            blog1.isFeatured = blog.isFeatured;
+
+
+            await _blogRepository.UpdateAsync(blog1);
+
+
         }
 
-      
+
     }
 }

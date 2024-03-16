@@ -33,30 +33,17 @@ namespace BookStore.Areas.Manage.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ModelState.AddModelError("ContactUs", "Bos kecdiyin hisse var. her seyi elave etdiyinden emin ol");
                 return View();
             }
           await  _contactService.CreateAsync(contactUs);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Update(int Id)
-        {
-            ContactUs contact= await _contactService.GetAsync(Id);
-            
-            return View(contact);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(ContactUs contactUs,int id)
-        {
-            ContactUs contact = await _contactService.GetAsync(id);
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            await _contactService.UpdateAsync(contactUs, id);
+ 
 
-            return RedirectToAction(nameof(Index));
-        }
+
+
+        
     }
 }

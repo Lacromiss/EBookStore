@@ -37,6 +37,11 @@
                 <input asp-for="AuthorId" class="form-control" />
                 <span asp-validation-for="AuthorId" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="isFeatured" class="control-label"></label>
+                <input asp-for="isFeatured" />
+                <span asp-validation-for="isFeatured" class="text-danger"></span>
+            </div>
           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -1,4 +1,5 @@
-﻿
+﻿@using Core.Entities
+@model ContactUs
 @{
     ViewData["Title"] = "Index";
 }
@@ -61,30 +62,30 @@
         </div>
         <!-- form start -->
         <div class="d-flex f-dir-column form-container">
-            <form class="d-flex f-dir-column" action="post">
-                <div class="name-email-inputs d-flex space-between align-center">
-                    <label for="userName">
+            <form asp-action="Create" method="post" asp-area="Manage" asp-controller="ContactUs" class="d-flex f-dir-column">
+                <div  class="name-email-inputs d-flex space-between align-center">
+                    <label asp-for="Name">
                         <img src="~/Assests/assets/img/user.png" alt="user icon" />
-                        <input type="text" name="userName" placeholder="Name" id="userName" />
+                        <input asp-for="Name" type="text" name="userName" placeholder="Name" id="userName" />
                     </label>
 
-                    <label class="email" for="email">
+                    <label class="email" asp-for="Email">
                         <img src="~/Assests/assets/img/mail.png" alt="mail icon" />
-                        <input type="email" name="email" placeholder="Email" id="email" />
+                        <input asp-for="Email" type="email" name="email" placeholder="Email" id="email" />
                     </label>
                 </div>
-                <label class="phone" for="phone">
+                <label class="phone" asp-for="PhoneNumber">
                     <img src="~/Assests/assets/img/phone.png" alt="phone icon" />
-                    <input type="number" name="phone" id="phone" placeholder="Phone" />
+                    <input asp-for="PhoneNumber" type="text" name="phone"  placeholder="Phone" />
                 </label>
-                <label for="textarea">
+                <label asp-for="Message">
                     <img src="~/Assests/assets/img/edit.png" alt="edit icon" />
-                    <textarea name="textarea" id="textarea" placeholder="Message"></textarea>
+                    <textarea asp-for="Message" name="textarea" id="textarea" placeholder="Message"></textarea>
                 </label>
 
-                <label class="gray check d-flex align-center" for="check">
-                    <input type="checkbox" name="check" id="check" />
-                    Keep me up to date with news and offers from time to time by email
+                <label class="gray check d-flex align-center" asp-for="RememberMe">
+                    <input asp-for="RememberMe" type="checkbox" name="check" id="check" />
+                    @Html.DisplayNameFor(model => model.RememberMe)
                 </label>
                 <button type="submit" class="btn btn-send">Send Message</button>
             </form>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Core.ViewModel
+@model BookBlogAuthorCommentVM;
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -53,6 +55,39 @@
         <div class="d-flex space-between books-section">
             <div class="swiper book-swiper">
                 <div class="swiper-wrapper">
+                    @foreach (var item in Model.Books)
+                    {
+                        <div class="swiper-slide">
+                            <div class="d-flex blue books-sec-cont">
+                                <img class="books-small"
+                                     src="~/Assests/assets/img/@item.ImgUrl"
+                                     alt="Atomic one`s book cover" />
+                                <div class="books-small-text">
+                                    <h3>@item.Name</h3>
+                                    <p>
+                                        @item.Description
+
+                                    </p>
+                                    <div class="d-flex blue books-pages-cont">
+                                        <div class="bulleted">
+                                            <h4>Pages:</h4>
+                                            <p class="gray">@item.Page pages</p>
+                                        </div>
+                                        <div class="bulleted">
+                                            <h4>Length:</h4>
+                                            <p class="gray">10 hours</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn-no-bg">
+                                        <a class="blue" href="#">Order Today</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+
                     <div class="swiper-slide">
                         <div class="d-flex blue books-sec-cont">
                             <img class="books-small"
@@ -81,89 +116,7 @@
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
-                        <div class="d-flex blue books-sec-cont">
-                            <img class="books-small"
-                                 src="~/Assests/assets/img/book6.webp"
-                                 alt="The dark light book cover" />
-                            <div class="books-small-text">
-                                <h3>The Dark Light</h3>
-                                <p>
-                                    Many variations of passages of Lorem Ipsum willing araise
-                                    alteration in some form.
-                                </p>
-                                <div class="d-flex blue books-pages-cont">
-                                    <div class="bulleted">
-                                        <h4>Pages:</h4>
-                                        <p class="gray">586 pages</p>
-                                    </div>
-                                    <div class="bulleted">
-                                        <h4>Length:</h4>
-                                        <p class="gray">10 hours</p>
-                                    </div>
-                                </div>
-                                <button class="btn-no-bg">
-                                    <a class="blue" href="#">Order Today</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="d-flex blue books-sec-cont">
-                            <img class="books-small"
-                                 src="~/Assests/assets/img/book7.webp"
-                                 alt="The dark light book cover" />
-                            <div class="books-small-text">
-                                <h3>The Dark Light</h3>
-                                <p>
-                                    Many variations of passages of Lorem Ipsum willing araise
-                                    alteration in some form.
-                                </p>
-                                <div class="d-flex blue books-pages-cont">
-                                    <div class="bulleted">
-                                        <h4>Pages:</h4>
-                                        <p class="gray">586 pages</p>
-                                    </div>
-                                    <div class="bulleted">
-                                        <h4>Length:</h4>
-                                        <p class="gray">10 hours</p>
-                                    </div>
-                                </div>
-                                <button class="btn-no-bg">
-                                    <a class="blue" href="#">Order Today</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="d-flex blue books-sec-cont">
-                            <img class="books-small"
-                                 src="~/Assests/assets/img/book2.jpg"
-                                 alt="The dark light book cover" />
-                            <div class="books-small-text">
-                                <h3>The Dark Light</h3>
-                                <p>
-                                    Many variations of passages of Lorem Ipsum willing araise
-                                    alteration in some form.
-                                </p>
-                                <div class="d-flex blue books-pages-cont">
-                                    <div class="bulleted">
-                                        <h4>Pages:</h4>
-                                        <p class="gray">586 pages</p>
-                                    </div>
-                                    <div class="bulleted">
-                                        <h4>Length:</h4>
-                                        <p class="gray">10 hours</p>
-                                    </div>
-                                </div>
-                                <button class="btn-no-bg">
-                                    <a class="blue" href="#">Order Today</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>
@@ -178,35 +131,35 @@
                  src="~/Assests/assets/img/Author.jpg"
                  alt="Author John Abraham" />
         </div>
+        @foreach (var item in Model.Authors)
+        {
+            <div class="about-author-section">
+                <h2 class="about-author-underline blue">About Author</h2>
+                <p class="gray">
+                  @item.AuthorDescription
+                </p>
+                <div class="yellow-border-section d-flex space-between">
+                    <div class="border-right-yellow">
+                        <h2>@item.PublishedBook</h2>
+                        <p class="gray">Books Published</p>
+                    </div>
+                    <div class="border-right-yellow">
+                        <h2>4.5</h2>
+                        <p class="gray">User Reviews</p>
+                    </div>
+                    <div>
+                        <h2>04</h2>
+                        <p class="gray">Best seller awards</p>
+                    </div>
+                </div>
+                <div class="visit-card-container">
+                    <img class="visit-card"
+                         src="~/Assests/assets/img/@item.ImgUrl"
+                         alt="visit card" />
+                </div>
+            </div>
 
-        <div class="about-author-section">
-            <h2 class="about-author-underline blue">About Author</h2>
-            <p class="gray">
-                All the Lorem Ipsum generators on the Internet tend to repeated
-                predefined chunks as necessary, making this the first true value
-                generator on the Internet. It uses a dictionary of over 200 Latin
-                words, combined with a handful.
-            </p>
-            <div class="yellow-border-section d-flex space-between">
-                <div class="border-right-yellow">
-                    <h2>02</h2>
-                    <p class="gray">Books Published</p>
-                </div>
-                <div class="border-right-yellow">
-                    <h2>4.5</h2>
-                    <p class="gray">User Reviews</p>
-                </div>
-                <div>
-                    <h2>04</h2>
-                    <p class="gray">Best seller awards</p>
-                </div>
-            </div>
-            <div class="visit-card-container">
-                <img class="visit-card"
-                     src="~/Assests/assets/img/visit-card.png"
-                     alt="visit card" />
-            </div>
-        </div>
+        }
     </div>
 </div>
 <!-- about author end -->
@@ -539,54 +492,26 @@
     <div class="container d-flex align-center articles-container">
         <h3 class="article-text">Articles & Resources</h3>
         <div class="article-img-container d-flex">
-            <div class="article-card d-flex">
-                <img src="~/Assests/assets/img/article1.png" alt="girl reading book" />
-                <div class="article-text-container">
-                    <h4>
-                        The energy efficiency offers hydrotherapy or swim
-                    </h4>
-                    <h5 class="gray">
-                        The point of using Lorem Ipsum hiter of that using making it
-                        look like others readable will get end.
-                    </h5>
-                    <div class="d-flex space-between align-center article-card-details">
-                        <h6><a class="blue" href="#">Read More</a></h6>
-                        <h6>Author - 07.07.2023</h6>
+            @foreach (var item in Model.Blogs)
+            {
+                <div class="article-card d-flex">
+                    <img src="~/Assests/assets/img/@item.ImgUrl" alt="girl reading book" />
+                    <div class="article-text-container">
+                        <h4>
+                            @item.Title
+                        </h4>
+                        <h5 class="gray">
+                            @item.Description
+                        </h5>
+                        <div class="d-flex space-between align-center article-card-details">
+                            <h6><a class="blue" href="#">Read More</a></h6>
+                            <h6>Author - @item.CreatedDate</h6>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="article-card d-flex">
-                <img src="~/Assests/assets/img/article2.png" alt="girl reading book" />
-                <div class="article-text-container">
-                    <h4>
-                        The energy efficiency offers hydrotherapy or swim
-                    </h4>
-                    <h5 class="gray">
-                        The point of using Lorem Ipsum hiter of that using making it
-                        look like others readable will get end.
-                    </h5>
-                    <div class="d-flex space-between align-center article-card-details">
-                        <h6><a class="blue" href="#">Read More</a></h6>
-                        <h6>Author - 07.07.2023</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="article-card d-flex">
-                <img src="~/Assests/assets/img/article3.png" alt="girl reading book" />
-                <div class="article-text-container">
-                    <h4>
-                        The energy efficiency offers hydrotherapy or swim
-                    </h4>
-                    <h5 class="gray">
-                        The point of using Lorem Ipsum hiter of that using making it
-                        look like others readable will get end.
-                    </h5>
-                    <div class="d-flex space-between align-center article-card-details">
-                        <h6><a class="blue" href="#">Read More</a></h6>
-                        <h6>Author - 07.07.2023</h6>
-                    </div>
-                </div>
-            </div>
+
+            }
+
         </div>
     </div>
 </div>

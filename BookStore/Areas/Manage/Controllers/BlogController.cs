@@ -32,7 +32,7 @@ namespace BookStore.Areas.Manage.Controllers
         public async Task< IActionResult> Create(Blog blog)
         {
             if (!ModelState.IsValid) {
-                return View();
+                return BadRequest();
                     }
          await  _blogService.CreateAsync(blog);
 
@@ -49,14 +49,13 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Blog blog,int id)
         {
-          Blog blog1 = await _blogService.GetByIdAsync(blog.Id);
 
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-          await  _blogService.UpdateAsync(blog1, id);
+          await  _blogService.UpdateAsync(blog, id);
             return RedirectToAction(nameof(Index));
         }
     }

@@ -20,6 +20,11 @@ namespace Services.Implementations
 
         public void Create(Book book)
         {
+            if (book.isFeatured==null)
+            {
+
+                book.isFeatured = false ;
+            }
             _bookRepository.AddAsync(book);
         }
 
@@ -41,10 +46,11 @@ namespace Services.Implementations
 
         public async   Task UpdateAsync(Book book1, int id)
         {
+
             Book book = await _bookRepository.GetByIdAsync(id);
           
-            book.Description = book1.Description;
-            book.Author = book1.Author;
+           book.Description = book1.Description;
+         book.Author = book1.Author;
             book.AuthorId = book1.AuthorId;
             book.ImgUrl = book1.ImgUrl;
             book.Raiting = book1.Raiting;
@@ -53,10 +59,13 @@ namespace Services.Implementations
             book.Name = book1.Name;
             book.UpdatedDate = DateTime.Now;
             book.CreatedDate = book1.CreatedDate;
+            book.isFeatured = book1.isFeatured;
 
            await _bookRepository.UpdateAsync(book);
             
 
         }
+
+      
     }
 }

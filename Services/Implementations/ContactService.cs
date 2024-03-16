@@ -35,21 +35,21 @@ namespace Services.Implementations
             return await _contactRepository.GetByIdAsync(id);
         }
 
-        public async Task UpdateAsync(ContactUs contact, int id)
-        {
-            ContactUs findedcontactUs = await _contactRepository.GetByIdAsync(id);
-            findedcontactUs.Email = contact.Email;
-            findedcontactUs.RememberMe = contact.RememberMe;
-            findedcontactUs.Message = contact.Message;
-            findedcontactUs.isDeleted = contact.isDeleted;
-            findedcontactUs.Id = contact.Id;
-            findedcontactUs.Name = contact.Name;
-            findedcontactUs.PhoneNumber = contact.PhoneNumber;
+        //public async Task UpdateAsync(ContactUs contact, int id)
+        //{
+        //    ContactUs findedcontactUs = await _contactRepository.GetByIdAsync(id);
+        //    findedcontactUs.Email = contact.Email;
+        //    findedcontactUs.RememberMe = contact.RememberMe;
+        //    findedcontactUs.Message = contact.Message;
+        //    findedcontactUs.isDeleted = contact.isDeleted;
+        //    findedcontactUs.Id = contact.Id;
+        //    findedcontactUs.Name = contact.Name;
+        //    findedcontactUs.PhoneNumber = contact.PhoneNumber;
 
-            findedcontactUs.UpdatedDate = DateTime.Now;
-            findedcontactUs.CreatedDate = contact.CreatedDate;
-            await _contactRepository.UpdateAsync(findedcontactUs);
+        //    findedcontactUs.UpdatedDate = DateTime.Now;
+        //    findedcontactUs.CreatedDate = contact.CreatedDate;
+        //    await _contactRepository.UpdateAsync(findedcontactUs);
 
-        }
+        //}
     }
 }

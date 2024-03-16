@@ -48,7 +48,6 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Author author,int id)
         {
-            Author updatedAuthor = await _authorService.GetByIdAasync(id);
             if (!ModelState.IsValid) { return View(); }
 
            await _authorService.UpdateAsync(author, id);
