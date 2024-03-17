@@ -19,6 +19,8 @@ namespace DAL.Concrete
           public DbSet<Author> authors {  get; set; }
           public DbSet<Test> tests {  get; set; }
           public DbSet<ContactUs> contactUs {  get; set; }
+          public DbSet<AuthorStory> authorStories {  get; set; }
+          public DbSet<AuthorSkills> authorSkills {  get; set; }
 
 
 

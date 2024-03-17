@@ -20,11 +20,7 @@ namespace Services.Implementations
 
         public void Create(Book book)
         {
-            if (book.isFeatured==null)
-            {
-
-                book.isFeatured = false ;
-            }
+           
             _bookRepository.AddAsync(book);
         }
 

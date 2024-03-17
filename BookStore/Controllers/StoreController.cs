@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Services.Implementations;
+using Services.Interfaces;
 
 namespace BookStore.Controllers
 {
     public class StoreController : Controller
     {
-        public IActionResult Index()
+        private readonly IBookService _bookService;
+
+        public StoreController(IBookService bookService)
         {
-            return View();
+            _bookService=bookService;
+        }
+        public async Task<IActionResult> Index()
+        {
+       List< Book> book=   await _bookService.GetAllAsync();
+            return View(book);
         }
     }
 }

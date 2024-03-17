@@ -37,8 +37,7 @@ namespace DAL.Migrations
 
                     b.Property<string>("AuthorEmail")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AuthorFullName")
                         .IsRequired()
@@ -47,34 +46,28 @@ namespace DAL.Migrations
 
                     b.Property<string>("AuthorPhone")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Genre")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgUrl")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Language")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PublishedBook")
-                        .HasMaxLength(12)
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -86,6 +79,67 @@ namespace DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("authors");
+                });
+
+            modelBuilder.Entity("Core.Entities.AuthorSkills", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthorStoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Skills")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorStoryId");
+
+                    b.ToTable("authorSkills");
+                });
+
+            modelBuilder.Entity("Core.Entities.AuthorStory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("authorStories");
                 });
 
             modelBuilder.Entity("Core.Entities.Blog", b =>
@@ -261,6 +315,17 @@ namespace DAL.Migrations
                     b.ToTable("tests");
                 });
 
+            modelBuilder.Entity("Core.Entities.AuthorSkills", b =>
+                {
+                    b.HasOne("Core.Entities.AuthorStory", "AuthorStory")
+                        .WithMany("AuthorSkills")
+                        .HasForeignKey("AuthorStoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuthorStory");
+                });
+
             modelBuilder.Entity("Core.Entities.Blog", b =>
                 {
                     b.HasOne("Core.Entities.Author", "Author")
@@ -288,6 +353,11 @@ namespace DAL.Migrations
                     b.Navigation("Blogs");
 
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("Core.Entities.AuthorStory", b =>
+                {
+                    b.Navigation("AuthorSkills");
                 });
 #pragma warning restore 612, 618
         }
