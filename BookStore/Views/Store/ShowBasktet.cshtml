@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Core.Entities.Basket.BookBasket>
+
+@{
+    ViewData["Title"] = "ShowBasktet";
+}
+<head  >
+
+    <link rel="stylesheet" href="~/Assests/Css/card.css" />
+
+</head>
+< <section class="card-section">
+    <div class="container d-flex cards-container" style="gap: 20px">
+        <div class="cards-wrapper">
+            @foreach (var item in Model)
+            {
+                
+            
+            <div class="single-card d-flex align-center">
+                    <a asp-action="RemoveItem" asp-controller="Store" asp-route-Id="@item.Id"> Remove</a>
+
+                <div class="card-image">
+                    <img src="~/Assests/assets/img/@item.ImgUrl" alt="" />
+                </div>
+
+                <div class="card-text d-flex space-between align-center">
+                    <p class="card-desc">
+
+                        <a href="#">
+                       @item.Description
+                        </a>
+                    </p>
+
+                    <div class="card-action-buttons d-flex align-center justify-center">
+                            <a asp-action="Cix" asp-controller="Store" asp-route-Id="@item.Id">
+                                -
+                        </a>
+
+                       <a>@item.Count</a>
+                            <a asp-action="Topla" asp-controller="Store" asp-route-Id="@item.Id">
+                                +
+                            </a>
+                    </div>
+
+                    <p class="card-price">@item.Price $</p>
+                </div>
+            </div>
+            }
+
+        </div>
+
+        <div class="card-checkout">
+            <h3>Card total</h3>
+
+            <div class="checkout-content">
+                <p>Book Name</p>
+
+                <p>Lorem ipsum dolor sit</p>
+            </div>
+
+            <div class="checkout-content">
+                <p>Total price</p>
+
+                <p>40.0 $</p>
+            </div>
+
+            <button>Buy</button>
+        </div>
+
+        <!-- <div class="empty-card-wrapper">
+          <div class="empty-card-image">
+            <img src="../assets/img/empty-card.png" alt="" />
+          </div>
+
+          <h2 class="empty-card">Your card is empty</h2>
+
+          <a href="#">Back to shopping</a>
+        </div> -->
+    </div>
+</section>

@@ -41,6 +41,7 @@ namespace Core.Entities
 
         public float Raiting { get; set; }
         public bool isFeatured { get; set; }
+        public int Count { get; set; }
 
     }
 }

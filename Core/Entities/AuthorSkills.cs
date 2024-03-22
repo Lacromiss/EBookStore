@@ -8,8 +8,10 @@ namespace Core.Entities
 {
     public class AuthorSkills:BaseModel
     {
+        public string SkillsTitle { get; set; }
         public string Skills { get; set; }
         public int AuthorStoryId { get; set; }
         public AuthorStory AuthorStory { get; set; }
+
     }
 }

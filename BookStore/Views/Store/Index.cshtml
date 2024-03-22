@@ -56,7 +56,7 @@
                   @item.Description
                 </p>
                 <h4 class="bulleted">Printed Books</h4>
-                <button class="btn-no-bg btn-small">Order Today</button>
+                    <button class="btn-no-bg btn-small">  <a asp-action="AddBasket" asp-controller="Store" asp-route-Id="@item.Id"> Add basket</a> </button>
             </div>
         </div>
         }
