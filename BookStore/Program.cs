@@ -5,6 +5,7 @@ using Services.Implementations;
 using Services.Interfaces;
 using Core.Repositories;
 using DAL.Concrete;
+using Core.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

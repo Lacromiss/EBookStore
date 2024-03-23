@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Core.Entities
 {
@@ -42,6 +45,11 @@ namespace Core.Entities
         public float Raiting { get; set; }
         public bool isFeatured { get; set; }
         public int Count { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; } 
+
+
 
     }
 }

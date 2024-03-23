@@ -48,6 +48,7 @@ namespace BookStore.Areas.Manage.Controllers
         }
         public  async Task< IActionResult> Update(int id ) 
         {
+           
             var book= await _bookService.GetAsync(id);
             return View(book);
         

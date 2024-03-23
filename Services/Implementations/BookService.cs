@@ -1,26 +1,34 @@
 ﻿using Core.Entities;
 using Core.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Services.Exceptions;
 using Services.Interfaces;
+using Services.Utilites;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Services.Implementations
 {
     public class BookService : IBookService
     {
        private  IBookRepository _bookRepository;
+
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository=bookRepository;
             
         }
 
-        public void Create(Book book)
+        public async void Create( Book book)
         {
-           
+
+           // book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Pages", "image"));
+
             _bookRepository.AddAsync(book);
         }
 
@@ -44,6 +52,7 @@ namespace Services.Implementations
         {
 
             Book book = await _bookRepository.GetByIdAsync(id);
+           
           
            book.Description = book1.Description;
          book.Author = book1.Author;
