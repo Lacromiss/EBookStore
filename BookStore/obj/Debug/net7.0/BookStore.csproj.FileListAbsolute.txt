@@ -259,3 +259,11 @@ C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Core.pdb
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Services.dll
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Services.pdb
 C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Milvasoft.FormFileOperations.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\Accelist.FluentValidation.Blazor.dll
+C:\Users\Mustafa\source\repos\BookStore\BookStore\bin\Debug\net7.0\FluentValidation.dll

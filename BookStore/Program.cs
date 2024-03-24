@@ -6,8 +6,24 @@ using Services.Interfaces;
 using Core.Repositories;
 using DAL.Concrete;
 using Core.Entities;
+using Microsoft.AspNetCore.Identity;
+using Core.Entities.Account;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+                         .AddEntityFrameworkStores<EBookStoreDbContext>()
+                         .AddDefaultTokenProviders();
+builder.Services.Configure<IdentityOptions>(opt =>
+{
+    opt.Password.RequireDigit = true;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireLowercase = true;
+    opt.Password.RequireUppercase = true;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(3);
+
+});
+
 
 // Hizmet Kayıtları
 
@@ -22,6 +38,9 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<AppUser>();
+
+
 
 builder.Services.AddHttpContextAccessor();
 

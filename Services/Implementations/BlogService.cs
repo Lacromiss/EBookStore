@@ -13,6 +13,7 @@ namespace Services.Implementations
     {
         private readonly IBlogRepository _blogRepository;
 
+
         public BlogService(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
@@ -57,7 +58,14 @@ namespace Services.Implementations
 
 
         }
-
+        public async Task RemoveAasync(int id)
+        {
+            Blog blog = await _blogRepository.GetByIdAsync(id);
+            if (blog != null)
+            {
+                await _blogRepository.RemoveAsync(blog);
+            }
+        }
 
     }
 }

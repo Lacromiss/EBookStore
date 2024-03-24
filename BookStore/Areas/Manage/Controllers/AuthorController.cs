@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implementations;
 using Services.Interfaces;
@@ -6,6 +7,8 @@ using Services.Interfaces;
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+
     public class AuthorController : Controller
     {
         private readonly IAuthorService _authorService;

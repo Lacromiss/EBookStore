@@ -13,5 +13,7 @@ namespace Services.Interfaces
         public Task UpdateAsync(Book book,int id);
         public Task <Book> GetAsync(int id);
         public Task<List<Book>> GetAllAsync();
+        public Task RemoveAasync(int id);
+
     }
 }

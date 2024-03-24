@@ -41,6 +41,11 @@ namespace DAL.Repositories.Implementations
         {
             _context.Update(entity);
        await     _context.SaveChangesAsync();
+        }     
+        public async Task RemoveAsync(T entity)
+        {
+            _context.Remove(entity);
+       await     _context.SaveChangesAsync();
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using Core.Entities;
+﻿using BookStore.Img_validations;
+using Core.Entities;
 using Core.Repositories.Interfaces;
 using DAL.Concrete;
 using DAL.Repositories.Implementations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Common;
@@ -11,10 +13,13 @@ using Services.Interfaces;
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+
     public class BookController : Controller
     {
           IBookService _bookService;
         private readonly EBookStoreDbContext _dbContext;
+        private readonly IWebHostEnvironment _env;
 
         public BookController(IBookService bookService, EBookStoreDbContext dbContext)
         {
@@ -34,13 +39,14 @@ namespace BookStore.Areas.Manage.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book book)
+        public async Task<IActionResult> Create(Book book)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
-
+                
+                return View();
             }
+            book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assest", "img"));
 
             _bookService.Create(book);
 
@@ -64,6 +70,19 @@ namespace BookStore.Areas.Manage.Controllers
             }
 
             await    _bookService.UpdateAsync(book,id);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveAsync(Book book, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+
+            }
+
+            await _bookService.RemoveAasync(id);
             return RedirectToAction(nameof(Index));
         }
     }

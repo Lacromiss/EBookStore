@@ -13,5 +13,7 @@ namespace Services.Interfaces
         public Task UpdateAsync(Blog blog, int id);
         public  Task<Blog> GetByIdAsync(int id);
         public Task<List<Blog>> GetAllAsync();
+        public Task RemoveAasync(int id);
+
     }
 }

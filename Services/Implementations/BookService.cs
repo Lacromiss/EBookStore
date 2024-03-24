@@ -16,46 +16,76 @@ namespace Services.Implementations
 {
     public class BookService : IBookService
     {
-       private  IBookRepository _bookRepository;
+        private IBookRepository _bookRepository;
 
         public BookService(IBookRepository bookRepository)
         {
-            _bookRepository=bookRepository;
-            
+            _bookRepository = bookRepository;
+
         }
 
-        public async void Create( Book book)
+        public async void Create(Book book)
         {
 
-           // book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Pages", "image"));
+            // book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Pages", "image"));
+            try
+            {
+                if (book.Photo != null)
+                {
 
+
+                    if (book.Photo.CheckType("image/"))
+                    {
+                        throw new ImgValidationExcemtions("img formatinda bir seyler at");
+
+                    }
+                    if (book.Photo.CheckSize(5))
+                    {
+                        throw new ImgValidationExcemtions("maks 5mbfayl yukelye bilersen");
+
+
+                    }
+
+                }
+
+               
+
+
+
+
+            }
+            catch (ImgValidationExcemtions)
+            {
+
+                throw;
+            }
             _bookRepository.AddAsync(book);
         }
 
-        public Task< Book> GetAsync(int id)
+        public Task<Book> GetAsync(int id)
         {
             return _bookRepository.GetByIdAsync(id);
         }
 
         public Task<List<Book>> GetAllAsync()
         {
-           return _bookRepository.GetAllAsync();
+            return _bookRepository.GetAllAsync();
 
         }
 
-       
 
-     
-    
 
-        public async   Task UpdateAsync(Book book1, int id)
+
+
+
+        public async Task UpdateAsync(Book book1, int id)
         {
 
             Book book = await _bookRepository.GetByIdAsync(id);
-           
-          
-           book.Description = book1.Description;
-         book.Author = book1.Author;
+
+
+            book.Description = book1.Description;
+            book.Author = book1.Author;
             book.AuthorId = book1.AuthorId;
             book.ImgUrl = book1.ImgUrl;
             book.Raiting = book1.Raiting;
@@ -66,11 +96,18 @@ namespace Services.Implementations
             book.CreatedDate = book1.CreatedDate;
             book.isFeatured = book1.isFeatured;
 
-           await _bookRepository.UpdateAsync(book);
-            
+            await _bookRepository.UpdateAsync(book);
+
 
         }
 
-      
+        public async Task RemoveAasync(int id)
+        {
+            Book book = await _bookRepository.GetByIdAsync(id);
+            if (book != null)
+            {
+              await  _bookRepository.RemoveAsync(book);
+            }
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace Services.Interfaces
         public Task UpdateAsync(AuthorStory authorStory, int id);
         public Task<List<AuthorStory>> GetAllAsync();
         public Task<AuthorStory> GetByIdAasync(int id);
+
     }
 }

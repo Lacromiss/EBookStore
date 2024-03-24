@@ -1,12 +1,15 @@
 ﻿using Core.Entities;
 using Core.Repositories.Interfaces;
 using DAL.Repositories.Implementations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+
     public class ContactUsController : Controller
     {
         private readonly IContactService _contactService;

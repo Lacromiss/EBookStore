@@ -11,10 +11,14 @@ namespace DAL.Repositories.Implementations
 {
     public class AuthorRepository:GenericRepository<Author>,IAuthorRepository
     {
-        public AuthorRepository(EBookStoreDbContext context):base(context)
+        EBookStoreDbContext _context1;
+        public AuthorRepository(EBookStoreDbContext context,EBookStoreDbContext context1):base(context)
         {
-            
+
         }
+    
+
+
 
     }
 }

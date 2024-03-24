@@ -1,12 +1,16 @@
 ﻿using Core.Entities;
 using DAL.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Implementations;
 using Services.Interfaces;
 using System.Reflection.Metadata;
 
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+
     public class BlogController : Controller
     {
         private readonly IBlogService _blogService;
@@ -58,5 +62,19 @@ namespace BookStore.Areas.Manage.Controllers
           await  _blogService.UpdateAsync(blog, id);
             return RedirectToAction(nameof(Index));
         }
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveAsync(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+
+            }
+
+            await _blogService.RemoveAasync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
+   
 }

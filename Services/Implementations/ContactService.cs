@@ -35,6 +35,16 @@ namespace Services.Implementations
             return await _contactRepository.GetByIdAsync(id);
         }
 
+        public async Task RemoveAasync(int id)
+        {
+             ContactUs findedcontactUs = await _contactRepository.GetByIdAsync(id);
+            if (findedcontactUs != null)
+            {
+             await   _contactRepository.RemoveAsync(findedcontactUs);
+            }
+
+        }
+
         //public async Task UpdateAsync(ContactUs contact, int id)
         //{
         //    ContactUs findedcontactUs = await _contactRepository.GetByIdAsync(id);
