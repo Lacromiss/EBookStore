@@ -20,11 +20,10 @@ namespace Core.Entities
 
 
         public string Description { get; set; }
-        [Required(ErrorMessage = "ImgUrl is empty"),DataType(DataType.ImageUrl,ErrorMessage ="wrong fotmat")]
 
 
 
-        public string ImgUrl { get; set; }
+        public string? ImgUrl { get; set; }
         [Required(ErrorMessage = "Page is empty")]
 
 
@@ -47,7 +46,7 @@ namespace Core.Entities
         public int Count { get; set; }
 
         [NotMapped]
-        public IFormFile Photo { get; set; } 
+        public IFormFile? Photo { get; set; } 
 
 
 

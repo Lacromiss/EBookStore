@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Common;
+using Services.Exceptions;
 using Services.Implementations;
 using Services.Interfaces;
 
@@ -21,15 +22,16 @@ namespace BookStore.Areas.Manage.Controllers
         private readonly EBookStoreDbContext _dbContext;
         private readonly IWebHostEnvironment _env;
 
-        public BookController(IBookService bookService, EBookStoreDbContext dbContext)
+        public BookController(IBookService bookService, EBookStoreDbContext dbContext, IWebHostEnvironment env)
         {
             _bookService = bookService;
             _dbContext = dbContext;
+            _env = env;
         }
 
         public async Task< IActionResult> Index()
         {
-          IEnumerable<Book> books =  await _bookService.GetAllAsync();
+            IEnumerable<Book> books = await _bookService.GetAllAsync();
             return View(books); 
         }
 
@@ -43,13 +45,10 @@ namespace BookStore.Areas.Manage.Controllers
         {
             if (!ModelState.IsValid)
             {
-                
-                return View();
+                return View(book);
             }
-            book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assest", "img"));
-
-            _bookService.Create(book);
-
+         
+            await  _bookService.CreateAsync(book);
             return RedirectToAction(nameof(Index));
         }
         public  async Task< IActionResult> Update(int id ) 

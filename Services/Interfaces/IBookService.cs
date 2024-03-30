@@ -9,7 +9,7 @@ namespace Services.Interfaces
 {
     public interface IBookService
     {
-        public void Create(Book book);
+        public Task CreateAsync(Book book);
         public Task UpdateAsync(Book book,int id);
         public Task <Book> GetAsync(int id);
         public Task<List<Book>> GetAllAsync();

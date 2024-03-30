@@ -1,6 +1,8 @@
 ﻿using Core.Entities;
 using Core.Repositories.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Services.Exceptions;
 using Services.Interfaces;
 using Services.Utilites;
@@ -16,42 +18,37 @@ namespace Services.Implementations
 {
     public class BookService : IBookService
     {
-        private IBookRepository _bookRepository;
+        private readonly IBookRepository _bookRepository;
+        private readonly IWebHostEnvironment _env;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IBookRepository bookRepository, IWebHostEnvironment env)
         {
             _bookRepository = bookRepository;
+            _env=env;
 
         }
 
-        public async void Create(Book book)
+        public async Task CreateAsync(Book book)
         {
 
-            // book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Pages", "image"));
             try
             {
                 if (book.Photo != null)
                 {
 
 
-                    if (book.Photo.CheckType("image/"))
+                    if (!book.Photo.CheckType("image/"))
                     {
                         throw new ImgValidationExcemtions("img formatinda bir seyler at");
 
                     }
-                    if (book.Photo.CheckSize(5))
+                    if (!book.Photo.CheckSize(5))
                     {
                         throw new ImgValidationExcemtions("maks 5mbfayl yukelye bilersen");
 
-
                     }
-
+                    book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assests", "assets", "img"));
                 }
-
-               
-
-
-
 
             }
             catch (ImgValidationExcemtions)
@@ -59,7 +56,8 @@ namespace Services.Implementations
 
                 throw;
             }
-            _bookRepository.AddAsync(book);
+            book.CreatedDate = DateTime.Now;
+          await  _bookRepository.AddAsync(book);
         }
 
         public Task<Book> GetAsync(int id)

@@ -1,4 +1,4 @@
-﻿@model Core.Entities.Book
+﻿@model Book
 
 @{
     ViewData["Title"] = "Create";
@@ -23,8 +23,8 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
+                <label asp-for="Photo" class="control-label" ></label>
+                <input asp-for="Photo" accept="image/*" class="form-control" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -294,7 +294,6 @@ namespace DAL.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("ImgUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Lenght")

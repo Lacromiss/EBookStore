@@ -19,7 +19,7 @@ namespace DAL.Repositories.Implementations
         public async Task AddAsync(T entity)
         {
             _context.Add(entity);
-           await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
 
         public async Task<List<T>> GetAllAsync()

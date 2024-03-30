@@ -4627,7 +4627,10 @@
         },
         "runtime": {
           "bin/placeholder/Services.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

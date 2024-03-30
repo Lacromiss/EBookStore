@@ -9,7 +9,7 @@ using System.Reflection.Metadata;
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
+    //[Authorize(Roles = "Admin,SuperAdmin")]
 
     public class BlogController : Controller
     {
@@ -24,23 +24,24 @@ namespace BookStore.Areas.Manage.Controllers
         public async Task<IActionResult> Index()
         {
             // IEnumerable<Blog> blog =  await _blogService.GetAllAsync();
-      List<  Blog> blog=    _context.blogs.ToList();
+            List<Blog> blog = _context.blogs.ToList();
             return View(blog);
         }
-        public async Task< IActionResult> Create()
+        public async Task<IActionResult> Create()
         {
-            return  View();
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task< IActionResult> Create(Blog blog)
+        public async Task<IActionResult> Create(Blog blog)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest();
-                    }
-         await  _blogService.CreateAsync(blog);
+            }
+            await _blogService.CreateAsync(blog);
 
-           
+
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Update(int id)
@@ -51,7 +52,7 @@ namespace BookStore.Areas.Manage.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Blog blog,int id)
+        public async Task<IActionResult> Update(Blog blog, int id)
         {
 
             if (!ModelState.IsValid)
@@ -59,7 +60,7 @@ namespace BookStore.Areas.Manage.Controllers
                 return View();
             }
 
-          await  _blogService.UpdateAsync(blog, id);
+            await _blogService.UpdateAsync(blog, id);
             return RedirectToAction(nameof(Index));
         }
         [HttpDelete]
@@ -76,5 +77,5 @@ namespace BookStore.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
     }
-   
+
 }
