@@ -46,6 +46,7 @@ namespace Core.Entities
         public int Count { get; set; }
 
         [NotMapped]
+        [Required(ErrorMessage ="Bos gecme photo elave et")]
         public IFormFile? Photo { get; set; } 
 
 

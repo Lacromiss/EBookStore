@@ -48,16 +48,17 @@ namespace Services.Implementations
 
                     }
                     book.ImgUrl = await book.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assests", "assets", "img"));
+                    book.CreatedDate = DateTime.Now;
+                    await _bookRepository.AddAsync(book);
                 }
 
             }
-            catch (ImgValidationExcemtions)
+            catch (ImgValidationExcemtions ex)
             {
 
-                throw;
+                throw ex;
             }
-            book.CreatedDate = DateTime.Now;
-          await  _bookRepository.AddAsync(book);
+
         }
 
         public Task<Book> GetAsync(int id)
@@ -79,22 +80,57 @@ namespace Services.Implementations
         public async Task UpdateAsync(Book book1, int id)
         {
 
-            Book book = await _bookRepository.GetByIdAsync(id);
+
+            try
+            {
+                Book book = await _bookRepository.GetByIdAsync(id);
+                if (book == null)
+                {
+                    throw new ImgValidationExcemtions("axtarilan id ye uyqun melumat tapilmadi");
+                }
 
 
-            book.Description = book1.Description;
-            book.Author = book1.Author;
-            book.AuthorId = book1.AuthorId;
-            book.ImgUrl = book1.ImgUrl;
-            book.Raiting = book1.Raiting;
-            book.isDeleted = book1.isDeleted;
-            book.Lenght = book1.Lenght;
-            book.Name = book1.Name;
-            book.UpdatedDate = DateTime.Now;
-            book.CreatedDate = book1.CreatedDate;
-            book.isFeatured = book1.isFeatured;
 
-            await _bookRepository.UpdateAsync(book);
+                    if (!book1.Photo.CheckType("image/"))
+                    {
+                        throw new ImgValidationExcemtions("img formatinda bir seyler at");
+
+                    }
+                    if (!book1.Photo.CheckSize(5))
+                    {
+                        throw new ImgValidationExcemtions("maks 5mbfayl yukelye bilersen");
+
+                    }
+                    book.Description = book1.Description;
+                    book.Author = book1.Author;
+                    book.AuthorId = book1.AuthorId;
+                    book.ImgUrl = book1.ImgUrl;
+                    book.Raiting = book1.Raiting;
+                    book.isDeleted = book1.isDeleted;
+                    book.Lenght = book1.Lenght;
+                    book.Name = book1.Name;
+                    book.UpdatedDate = DateTime.Now;
+                    book.CreatedDate = book1.CreatedDate;
+                    book.isFeatured = book1.isFeatured;
+                string existPhoto= Path.Combine(_env.WebRootPath, "Assests", "assets", "img", book.ImgUrl);
+                if (System.IO.File.Exists(existPhoto))
+                {
+                    System.IO.File.Delete(existPhoto);
+
+                }
+                book.ImgUrl = await book1.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assests", "assets", "img"));
+
+
+                await _bookRepository.UpdateAsync(book);
+                
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                throw ex;
+            }
+
+         
 
 
         }

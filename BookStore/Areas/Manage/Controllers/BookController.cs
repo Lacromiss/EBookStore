@@ -43,17 +43,31 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View(book);
             }
+            try
+            {
+               
+                await _bookService.CreateAsync(book);
+                return RedirectToAction(nameof(Index));
+
+
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                ViewBag.ErrorMessage = ex.Message;  
+            }
+           
+            return View();
          
-            await  _bookService.CreateAsync(book);
-            return RedirectToAction(nameof(Index));
         }
         public  async Task< IActionResult> Update(int id ) 
         {
-           
+          
             var book= await _bookService.GetAsync(id);
             return View(book);
         
@@ -67,9 +81,18 @@ namespace BookStore.Areas.Manage.Controllers
                 return View();
                 
             }
+            try
+            {
+                await _bookService.UpdateAsync(book, id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ImgValidationExcemtions ex)
+            {
 
-            await    _bookService.UpdateAsync(book,id);
-            return RedirectToAction(nameof(Index));
+                ViewBag.updateError=ex.Message;
+            }
+            return View(); 
+           
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
