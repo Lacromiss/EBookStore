@@ -5,7 +5,10 @@
 }
 
 <h1>Index</h1>
+<h2>
+    <p>@Html.Raw(ViewBag.BlogControllerRemove)</p>
 
+</h2>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -46,8 +49,8 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ImgUrl);
-            </td>
+<img src="~/Assests/assets/img/@item.ImgUrl" />
+</td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>

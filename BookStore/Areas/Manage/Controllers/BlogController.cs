@@ -2,6 +2,7 @@
 using DAL.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Services.Exceptions;
 using Services.Implementations;
 using Services.Interfaces;
 using System.Reflection.Metadata;
@@ -39,10 +40,21 @@ namespace BookStore.Areas.Manage.Controllers
             {
                 return BadRequest();
             }
-            await _blogService.CreateAsync(blog);
+            try
+            {
+
+                await _blogService.CreateAsync(blog);
+                return RedirectToAction(nameof(Index));
 
 
-            return RedirectToAction(nameof(Index));
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                ViewBag.BlogControllerCreate = ex.Message;
+            }
+
+            return View();
         }
         public async Task<IActionResult> Update(int id)
         {
@@ -54,18 +66,25 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Blog blog, int id)
         {
-
             if (!ModelState.IsValid)
             {
                 return View();
-            }
 
-            await _blogService.UpdateAsync(blog, id);
-            return RedirectToAction(nameof(Index));
+            }
+            try
+            {
+                await _blogService.UpdateAsync(blog, id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                ViewBag.BlogControllerUpdate = ex.Message;
+            }
+            return View();
         }
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveAsync(int id)
+
+        public async Task<IActionResult> Remove(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +92,17 @@ namespace BookStore.Areas.Manage.Controllers
 
             }
 
-            await _blogService.RemoveAasync(id);
+            try
+            {
+                await _blogService.RemoveAasync(id);
+
+
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                ViewBag.BlogControllerRemove = ex.Message;
+            }
             return RedirectToAction(nameof(Index));
         }
     }

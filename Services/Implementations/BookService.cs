@@ -112,10 +112,14 @@ namespace Services.Implementations
                     book.UpdatedDate = DateTime.Now;
                     book.CreatedDate = book1.CreatedDate;
                     book.isFeatured = book1.isFeatured;
-                string existPhoto= Path.Combine(_env.WebRootPath, "Assests", "assets", "img", book.ImgUrl);
-                if (System.IO.File.Exists(existPhoto))
+                if (book.ImgUrl!=null)
                 {
-                    System.IO.File.Delete(existPhoto);
+                    string existPhoto = Path.Combine(_env.WebRootPath, "Assests", "assets", "img", book.ImgUrl);
+                    if (System.IO.File.Exists(existPhoto))
+                    {
+                        System.IO.File.Delete(existPhoto);
+
+                    }
 
                 }
                 book.ImgUrl = await book1.Photo.SaveFileAsync(Path.Combine(_env.WebRootPath, "Assests", "assets", "img"));
@@ -138,10 +142,36 @@ namespace Services.Implementations
         public async Task RemoveAasync(int id)
         {
             Book book = await _bookRepository.GetByIdAsync(id);
-            if (book != null)
+            try
             {
-              await  _bookRepository.RemoveAsync(book);
+                if (book != null)
+                {
+                    if (book.ImgUrl!=null)
+                    {
+                        string existPhoto = Path.Combine(_env.WebRootPath, "Assests", "assets", "img", book.ImgUrl);
+                        if (System.IO.File.Exists(existPhoto))
+                        {
+                            System.IO.File.Delete(existPhoto);
+
+                        }
+
+                    }
+                  
+                    await _bookRepository.RemoveAsync(book);
+                }
+                else
+                {
+                    throw new ImgValidationExcemtions("NOT found");
+                }
+
             }
+            catch (ImgValidationExcemtions)
+            {
+
+                throw new ImgValidationExcemtions("not removed");
+            }
+
+
         }
     }
 }

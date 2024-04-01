@@ -14,11 +14,11 @@ using Services.Interfaces;
 namespace BookStore.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
+    // [Authorize(Roles = "Admin,SuperAdmin")]
 
     public class BookController : Controller
     {
-          IBookService _bookService;
+        IBookService _bookService;
         private readonly EBookStoreDbContext _dbContext;
         private readonly IWebHostEnvironment _env;
 
@@ -29,10 +29,10 @@ namespace BookStore.Areas.Manage.Controllers
             _env = env;
         }
 
-        public async Task< IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             IEnumerable<Book> books = await _bookService.GetAllAsync();
-            return View(books); 
+            return View(books);
         }
 
         public IActionResult Create()
@@ -43,14 +43,14 @@ namespace BookStore.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
-            
+
             if (!ModelState.IsValid)
             {
                 return View(book);
             }
             try
             {
-               
+
                 await _bookService.CreateAsync(book);
                 return RedirectToAction(nameof(Index));
 
@@ -59,27 +59,27 @@ namespace BookStore.Areas.Manage.Controllers
             catch (ImgValidationExcemtions ex)
             {
 
-                ViewBag.ErrorMessage = ex.Message;  
+                ViewBag.ErrorMessage = ex.Message;
             }
-           
+
             return View();
-         
+
         }
-        public  async Task< IActionResult> Update(int id ) 
+        public async Task<IActionResult> Update(int id)
         {
-          
-            var book= await _bookService.GetAsync(id);
+
+            var book = await _bookService.GetAsync(id);
             return View(book);
-        
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  async Task< IActionResult> UpdateAsync(Book book,int id)
+        public async Task<IActionResult> UpdateAsync(Book book, int id)
         {
             if (!ModelState.IsValid)
             {
                 return View();
-                
+
             }
             try
             {
@@ -89,14 +89,13 @@ namespace BookStore.Areas.Manage.Controllers
             catch (ImgValidationExcemtions ex)
             {
 
-                ViewBag.updateError=ex.Message;
+                ViewBag.updateError = ex.Message;
             }
-            return View(); 
-           
+            return View();
+
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveAsync(Book book, int id)
+
+        public async Task<IActionResult> Remove(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -104,7 +103,17 @@ namespace BookStore.Areas.Manage.Controllers
 
             }
 
-            await _bookService.RemoveAasync(id);
+            try
+            {
+                await _bookService.RemoveAasync(id);
+
+
+            }
+            catch (ImgValidationExcemtions ex)
+            {
+
+                ViewBag.removedError = ex.Message;
+            }
             return RedirectToAction(nameof(Index));
         }
     }
