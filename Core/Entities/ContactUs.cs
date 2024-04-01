@@ -9,7 +9,7 @@ namespace Core.Entities
 {
     public class ContactUs:BaseModel
     {
-        [Required(ErrorMessage = "Title is empty"), MaxLength(200, ErrorMessage = "maks symbol lenght 200")]
+        [Required(ErrorMessage = "name is empty"), MaxLength(200, ErrorMessage = "maks symbol lenght 200")]
 
 
         public string Name { get; set; }

@@ -50,7 +50,6 @@ namespace BookStore.Areas.Manage.Controllers
             }
             catch (ImgValidationExcemtions ex)
             {
-
                 ViewBag.BlogControllerCreate = ex.Message;
             }
 

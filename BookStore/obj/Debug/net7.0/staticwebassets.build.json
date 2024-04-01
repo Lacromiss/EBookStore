@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5Smo0ahQGfVjVFM/6oQc2WLIFnUSN2qaUFyEkyuKUkI=",
+  "Hash": "4ROtIcfoYWyn2PHKL1pAqx7ySCCI3SfWxNm8J/am5Xs=",
   "Source": "BookStore",
   "BasePath": "_content/BookStore",
   "Mode": "Default",
@@ -35642,6 +35642,25 @@
       "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\2bd9aade-eeb3-4791-9a38-ecd3aea607f0images (1).jpg"
     },
     {
+      "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\31daa66a-2b89-4260-abaf-5d7d903933cdLogo-megan2.png",
+      "SourceId": "BookStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\",
+      "BasePath": "_content/BookStore",
+      "RelativePath": "Assests/assets/img/31daa66a-2b89-4260-abaf-5d7d903933cdLogo-megan2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\31daa66a-2b89-4260-abaf-5d7d903933cdLogo-megan2.png"
+    },
+    {
       "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\353c74c0-4fc5-425b-9450-2fcc6ed8db7dmus.jpg",
       "SourceId": "BookStore",
       "SourceType": "Discovered",
@@ -36117,25 +36136,6 @@
       "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\7cc9826c-ac11-4f9a-ad3d-512eeec145e4mus.jpg"
     },
     {
-      "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\7cd4f370-fc03-4adc-b617-cc7ec9053e2bffff.jpg",
-      "SourceId": "BookStore",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\",
-      "BasePath": "_content/BookStore",
-      "RelativePath": "Assests/assets/img/7cd4f370-fc03-4adc-b617-cc7ec9053e2bffff.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\7cd4f370-fc03-4adc-b617-cc7ec9053e2bffff.jpg"
-    },
-    {
       "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\81331b07-9e1a-48e6-ba9e-2c9574040c9dhell.jpg",
       "SourceId": "BookStore",
       "SourceType": "Discovered",
@@ -36229,6 +36229,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\83514808-e7a4-4f85-9a74-ea1e277093cdheaven.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\85e8e5f8-0b93-421b-a2d7-e7268a33b0c5Logo-megan2.png",
+      "SourceId": "BookStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\",
+      "BasePath": "_content/BookStore",
+      "RelativePath": "Assests/assets/img/85e8e5f8-0b93-421b-a2d7-e7268a33b0c5Logo-megan2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\85e8e5f8-0b93-421b-a2d7-e7268a33b0c5Logo-megan2.png"
     },
     {
       "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\8751c280-c15f-4abd-990f-fa12b02fac65mus.jpg",
@@ -37236,6 +37255,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\f8866c92-f4e7-4ac1-994c-679929b9303cffff.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\f975d4d4-36c2-4ada-a2d3-6508f2e00857images (3).jpg",
+      "SourceId": "BookStore",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\",
+      "BasePath": "_content/BookStore",
+      "RelativePath": "Assests/assets/img/f975d4d4-36c2-4ada-a2d3-6508f2e00857images (3).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assests\\assets\\img\\f975d4d4-36c2-4ada-a2d3-6508f2e00857images (3).jpg"
     },
     {
       "Identity": "C:\\Users\\Mustafa\\source\\repos\\BookStore\\BookStore\\wwwroot\\Assests\\assets\\img\\home-icon.svg",
